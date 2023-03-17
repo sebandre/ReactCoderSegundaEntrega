@@ -8,9 +8,29 @@ import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import { CartContainer } from './components/Desafios/CartContainer/CartContainer';
 import { CartProvider } from './context/CartContext';
 
+
+
+
+
 function App() {
 
-  return (
+  return(
+    <>
+      <BrowserRouter>
+        <CartProvider>
+          <Navbar/>
+            <Routes>
+              <Route path='/' element={<ItemListContainer />}/>
+              <Route path="/productos/:categoriaId" element={<ItemListContainer />}/>
+              <Route path="/item/:detalleId" element={<ItemDetailContainer/>}/>
+              <Route path="/cart" element={<CartContainer/>}/>
+            </Routes>
+        </CartProvider>
+      </BrowserRouter>
+    </>
+  )
+
+  /*return (
     <CartProvider>
       <BrowserRouter>
         <div className="App">
@@ -26,7 +46,7 @@ function App() {
         </div>
       </BrowserRouter>
     </CartProvider>
-  );
+  );*/
 }
 
 export default App;

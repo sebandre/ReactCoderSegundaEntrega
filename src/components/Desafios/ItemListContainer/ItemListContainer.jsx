@@ -1,35 +1,31 @@
 import { useEffect, useState } from "react";
-import './ItemListContainer.css';
-import { arregloProductos } from "../../baseDatos/baseDatos";
+import { getFirestore, collection, getDocs, query, where } from 'firebase/firestore'
 import { ItemList } from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 
 export const ItemListContainer = ()=>{
-    const {tipoProducto} = useParams();
 
-    const [productos, setProductos] = useState([]);
+    const [data, setData] = useState([]);
+    const { categoriaId } = useParams();
 
-    const promesa = new Promise((resolve, reject)=>{
-        setTimeout(() => {
-            resolve(arregloProductos);
-        }, 2000);
-    })
-
-    useEffect(()=>{
-        promesa.then(resultado=>{
-            if(!tipoProducto){
-                setProductos(resultado)
-            } else{
-                const nuevaLista = resultado.filter(item=>item.categoria === tipoProducto);
-                setProductos(nuevaLista)
-            }
-        })
-    },[tipoProducto])
-
+    useEffect(() => {
+        const querydb = getFirestore();
+        const queryCollection = collection(querydb, 'marveltoys');
+        if (categoriaId) {
+            const queryFillter = query(queryCollection, where('categoria', '==', categoriaId))
+            getDocs(queryFillter)
+            .then(res => setData(res.docs.map(product => ({id: product.id, ...product.data()}))));
+            
+        } else {
+            getDocs(queryCollection)
+            .then(res => setData(res.docs.map(product => ({id: product.id, ...product.data()}))));
+        }
+        
+    }, [categoriaId]); 
     return(
         <div className="item-list-container">
             <h1 style={{width:"100%", color: "white"}}>Productos</h1>
-            <ItemList items={productos}/>
+            <ItemList data={data}/>
         </div>
     )
 }

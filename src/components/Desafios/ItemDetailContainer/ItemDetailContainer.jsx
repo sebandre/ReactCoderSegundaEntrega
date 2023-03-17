@@ -1,33 +1,32 @@
-import { useState, useEffect } from "react";
+import React ,{ useState, useEffect } from "react";
 import './ItemDetailContainer.css';
-import { arregloProductos } from "../../baseDatos/baseDatos";
+import { getFirestore, doc, getDoc } from 'firebase/firestore'
 import { ItemDetail } from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 
 export const ItemDetailContainer = ()=>{
-    const {productId} = useParams();
+    const [data, setData] = useState({});
+    const {detalleId} = useParams();
+    ;
 
-    const [item, setItem] = useState({});
 
-    const getItem = (id)=>{
-        return new Promise((resolve, reject)=>{
-            const product = arregloProductos.find(item=>item.id === parseInt(id));
-            resolve(product)
-        })
-    }
+    //const getItem = (id)=>{
+   //     return new Promise((resolve, reject)=>{
+   //         const product = arregloProductos.find(item=>item.id === parseInt(id));
+   //         resolve(product)
+   //     })
+  //  }
 
     useEffect(()=>{
-        const getProducto = async()=>{
-            const producto = await getItem(productId);
-            setItem(producto);
-        }
-        getProducto();
-    },[productId])
-
+        const querydb = getFirestore();
+        const queryDoc = doc(querydb, 'marveltoys', detalleId);
+        getDoc (queryDoc)
+        .then(res => setData({id: res.id, ...res.data()}));
+    },[detalleId])
     return(
         <div className="item-detail-container">
             <h1 style={{width:"100%", color: "white"}}>Detalles</h1>
-            <ItemDetail item={item}/>
+            <ItemDetail data={data}/>
         </div>
-    )
+    );
 }

@@ -1,16 +1,16 @@
 import { Item } from "../Item/Item"
+import React from 'react';
 import './ItemList.css';
 
-export const ItemList = ({items})=>{
+export const ItemList = ({data = []})=>{
 
     return(
         <div className="estilos-listado">
             <div style={{width:"100%"}}></div>
             {
-                items.map(producto=>(
-                        <Item key={producto.id} item={producto}/>
-                ))
+                data.map(products => <Item key={products.id} info={products}/>)               
             }
         </div>
-    )
+        
+    )  
 }
