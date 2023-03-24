@@ -11,8 +11,8 @@ export const CartItem = ({ item }) => {
             </div>
             <div className='cart-info-container'>
                 <p>{item.title}</p>
-                <p>precio unitario: {item.precio}</p>
-                <p>cantidad: {item.quantity}</p>
+                <p>Precio unitario: {item.precio}</p>
+                <p>Cantidad: {item.quantity}</p>
                 <p>Subtotal: ${item.quantity * item.precio}</p>
                 <button onClick={() => removeProduct(item.id)}>Eliminar</button>    
             </div>

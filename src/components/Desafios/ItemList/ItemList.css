@@ -1,10 +1,12 @@
 .estilos-listado{
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content:space-evenly;
     align-items: center;
     background-color: transparent;
     color: black;
     width: 90%;
     height: auto;
+    margin-left: 80px;
+    opacity: 95%;
 }

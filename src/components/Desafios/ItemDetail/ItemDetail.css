@@ -3,10 +3,12 @@
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-    width: 80%;
+    width: auto;
     height: auto;
     padding: 10px;
-    background-color: white;
+    background-color: gray;
+    opacity: 95%;
+    border-radius: 10px;
 }
 .img-container{
     display: flex;

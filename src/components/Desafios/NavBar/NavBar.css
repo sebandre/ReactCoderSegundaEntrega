@@ -23,8 +23,12 @@
 }
 
 .claseActive{
+    font-size: 20px;
+    font-weight: bold;
     color: white;
 }
 .claseInactive{
+    font-size: 20px;
+    font-weight: bold;
     color: blue;
 }

@@ -7,15 +7,7 @@ import { useParams } from "react-router-dom";
 export const ItemDetailContainer = ()=>{
     const [data, setData] = useState({});
     const {detalleId} = useParams();
-    ;
 
-
-    //const getItem = (id)=>{
-   //     return new Promise((resolve, reject)=>{
-   //         const product = arregloProductos.find(item=>item.id === parseInt(id));
-   //         resolve(product)
-   //     })
-  //  }
 
     useEffect(()=>{
         const querydb = getFirestore();
