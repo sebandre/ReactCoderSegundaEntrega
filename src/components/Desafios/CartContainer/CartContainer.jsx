@@ -49,8 +49,8 @@ export const CartContainer = () => {
   if (cart.length === 0){
     return (
       <>
-        <p>No hay elementos agregados al carrito</p>
-        <Link to='/'> Continuar Comprando</Link>
+        <p className='sinElementos'>No hay elementos agregados al carrito</p>
+        <p className='sinElementos'><Link to='/'> Continuar Comprando</Link></p>
       </>
     );
   }
@@ -64,22 +64,20 @@ export const CartContainer = () => {
       </p>  
       
       <form action="onSubmit">
-        <label htmlFor="" className='total'>
-          Nombre:
-          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
-          <br />
-          Apellido:
-          <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)}/>
-          <br />
-          Telefono:
-          <input type="number" value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
-          <br />
-          Email:   
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
-          <br />
-          Direccion:
-          <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
-        </label>
+        <label className='labelCart' for="name">Nombre: </label>
+        <input type="text" id='nombre' value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+        <br />
+        <label className='labelCart' for="apellido">Apellido: </label>
+        <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)}/>
+        <br />
+        <label className='labelCart' for="telefono">Telefono: </label>
+        <input type="number" value={telefono} onChange={(e) => setTelefono(e.target.value)}/>
+        <br />
+        <label className='labelCart' for="email">Email: </label>    
+        <input type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <br />
+        <label className='labelCart' for="direccion">Direccion: </label>
+        <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
       </form>
 
    
@@ -87,7 +85,7 @@ export const CartContainer = () => {
   
 
       
-      <button onClick={handleClick}>Finalizar compra</button>
+      <button className='botonComprar' onClick={handleClick}>Finalizar compra</button>
       
     </>
   )

@@ -1,6 +1,22 @@
-
+.botonComprar{
+    padding: 10px;
+    border-radius: 5px;
+    background: #101c2b;
+    color: white;
+    width: auto;
+    margin: 10px 0;
+}
 .total{
     font-size: 30px;
     font-weight: bold;
     color: white;   
+}
+.labelCart{
+    font-size: 25px;
+    font-weight: bold;
+    color: white; 
+}
+.sinElementos{
+    color: white;
+    font-size: 25px;
 }

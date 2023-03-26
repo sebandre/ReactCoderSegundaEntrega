@@ -14,7 +14,7 @@ export const CartItem = ({ item }) => {
                 <p>Precio unitario: {item.precio}</p>
                 <p>Cantidad: {item.quantity}</p>
                 <p>Subtotal: ${item.quantity * item.precio}</p>
-                <button onClick={() => removeProduct(item.id)}>Eliminar</button>    
+                <button className='eliminar' onClick={() => removeProduct(item.id)}>Eliminar</button>    
             </div>
         </div>
     )
